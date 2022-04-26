@@ -3,12 +3,14 @@
         <th>Id</th>
         <th>Task</th>
         <th>Date</th>
+        <th>Autor</th>
     </tr>
-    {% for tasks in tasks  %}
+    {% for task in tasks  %}
         <tr>
-            <td>{{ tasks.id }}</td>
-            <td>{{ tasks.task }}</td>
-            <td>{{ tasks.dueDate.format('d/m/Y') }}</td>
+            <td>{{ task.id }}</td>
+            <td>{{ task.task }}</td>
+            <td>{{ task.dueDate.format('d/m/Y') }}</td>
+            <td>{{task.autor}}</td>
 
         </tr>
     {% endfor %}

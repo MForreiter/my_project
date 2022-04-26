@@ -27,6 +27,13 @@ class Task
     private $dueDate;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Autor::class, inversedBy="tasks")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $autor;
+
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -79,6 +86,22 @@ class Task
         $this->dueDate = $dueDate;
         return $this;
     }
+
+    public function getAutor(): ?Autor
+    {
+        return $this->autor;
+    }
+
+    public function setAutor(?Autor $autor): self
+    {
+        $this->autor = $autor;
+
+        return $this;
+    }
+
+
+
+
 
 
 }

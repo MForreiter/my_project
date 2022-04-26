@@ -2,6 +2,8 @@
 
 namespace App\Form\Type;
 
+use App\Entity\Autor;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -17,8 +19,13 @@ public function buildForm(FormBuilderInterface $builder, array $options) :void
    $builder
        ->add('task', TextType::class)
        ->add('dueDate', DateType::class)
-       ->add('save', SubmitType::class)
+
        ;
+
+    $builder
+        ->add('autor' )
+        ->add('save', SubmitType::class);
+
 }
 public function configureOptions(OptionsResolver $resolver): void
 {
@@ -26,4 +33,8 @@ public function configureOptions(OptionsResolver $resolver): void
         'data_class' => Task::class,
     ]);
 }
+
+
+
+
 }
