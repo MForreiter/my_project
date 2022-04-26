@@ -47,6 +47,7 @@ class TaskController extends AbstractController
         return $this->render('task/success.html.twig', ['id' => $id]);
 
     }
+
     /**
      * @Route("/task/all", name="task_all")
 
@@ -62,4 +63,5 @@ class TaskController extends AbstractController
 
 
     }
+
 }

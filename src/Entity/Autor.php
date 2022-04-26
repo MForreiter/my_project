@@ -9,6 +9,7 @@ use PhpParser\Node\Name;
 /**
  * @ORM\Entity()
  */
+
 class Autor
 {
 
@@ -18,11 +19,11 @@ class Autor
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
      * @ORM\Column(type="string")
      */
     private $name;
-
 
     /**
      * @ORM\Column(type="string")
@@ -33,12 +34,12 @@ class Autor
      * @ORM\OneToMany(targetEntity=Task::class, mappedBy="autor")
      */
     private $tasks;
+    protected $autor;
 
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
     }
-
 
     /**
      * @return mixed
@@ -57,6 +58,7 @@ class Autor
         $this->id = $id;
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -74,6 +76,7 @@ class Autor
         $this->name = $name;
         return $this;
     }
+
     /**
      * @return mixed
      */
@@ -122,22 +125,19 @@ class Autor
         return $this;
     }
 
-
-    public function __toString()
-    {
-        return $this->name." ". $this->surname;
-
+    public function __toString(){
+        return $this->name." ".$this->surname;
     }
 
     public function getAutor()
     {
         return $this->autor;
     }
-
     public function setAutor(string $autor)
     {
-        $this->autor = $autor;
-
+        $this->autor=$autor;
         return $this;
     }
+
+
 }
