@@ -56,7 +56,7 @@ class TaskController extends AbstractController
     {
         $taskRepository= $entityManager->getRepository(Task::class);
         $tasks=$taskRepository->findAll();
-        dump($tasks);
+        //dump ($tasks);
         return $this->render('task/all.html.twig', ['tasks'=>$tasks]);
 
 

@@ -1,0 +1,16 @@
+<table>
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+    </tr>
+    {% for autors in autors %}
+        <tr>
+            <td>{{ autors.id }}</td>
+            <td>{{ autors.name }}</td>
+            <td>{{ autors.surname }}</td>
+        </tr>
+
+    {% endfor %}
+</table>
