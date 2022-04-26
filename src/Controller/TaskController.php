@@ -49,17 +49,19 @@ class TaskController extends AbstractController
     }
 
     /**
-     * @Route("/task/all", name="task_success")
+     * @Route("/task/all", name="task_all")
 
      */
-
-    public function all(EntityManagerInterface $entityManager)
+    public function all( EntityManagerInterface $entityManager)
     {
-        $taskRepository=$entityManager->getRepository(Task::class);
+        $taskRepository= $entityManager->getRepository(Task::class);
         $tasks=$taskRepository->findAll();
         dump($tasks);
-       // die;
         return $this->render('task/all.html.twig', ['tasks'=>$tasks]);
+
+
+
+
     }
 
 }
