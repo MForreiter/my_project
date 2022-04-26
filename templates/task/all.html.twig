@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Task</th>
+        <th>Date</th>
+    </tr>
+    {% for tasks in tasks %}
+    <tr>
+        <td>{{ tasks.id }}</td>
+        <td>{{ tasks.task }}</td>
+        <td>{{ tasks.dueDate.format('d/m/y') }}</td>
+    </tr>
+    {% endfor %}
+</table>

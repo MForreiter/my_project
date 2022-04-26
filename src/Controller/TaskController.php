@@ -31,7 +31,7 @@ class TaskController extends AbstractController
 
             $entityManager->persist($task);
             $entityManager->flush();
-            return $this->redirectToRoute('task_success', ['id' => $task->getId() ]);
+            return $this->redirectToRoute('task_success', ['id' => $task->getId()]);
         }
         return $this->renderForm('task/new.html.twig', [
             'form' => $form
@@ -47,4 +47,19 @@ class TaskController extends AbstractController
         return $this->render('task/success.html.twig', ['id' => $id]);
 
     }
+
+    /**
+     * @Route("/task/all", name="task_success")
+
+     */
+
+    public function all(EntityManagerInterface $entityManager)
+    {
+        $taskRepository=$entityManager->getRepository(Task::class);
+        $tasks=$taskRepository->findAll();
+        dump($tasks);
+       // die;
+        return $this->render('task/all.html.twig', ['tasks'=>$tasks]);
+    }
+
 }
