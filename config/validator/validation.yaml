@@ -1,0 +1,7 @@
+App\Entity\Task:
+  properities:
+    task:
+      - NotBlank: ~
+    dueDate:
+      - NotBlank: ~
+      - Type: \DateTime
