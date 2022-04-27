@@ -5,7 +5,10 @@
     ?>
     <head>
 <style>
-div.id{
+    body{
+        text-align: center;
+    }
+#id{
 
 text-align: center;
 display:block;
@@ -22,7 +25,6 @@ input{
  
     /*Krok 3: Style tekstu*/
     color:white;
-    
 
     
   
@@ -102,7 +104,7 @@ WXYZ"><br>
    <input id="reset" type="submit" name="reset" value="reset  
    ">
    <input id="sid" type="submit" name="submit" value=" space
-   ">
+   "><br><br>
 </form>
 
 </div>
