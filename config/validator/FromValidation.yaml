@@ -1,0 +1,24 @@
+App\Entity\Form:
+  properties:
+    name:
+        - NotBlank: ~
+        - Regex:
+            pattern: '/^[a-z]+$/i'
+            htmlPattern: '[a-zA-Z]+'
+            message: Your name cannot contain a special characters
+    surname:
+        - NotBlank: ~
+        - Regex:
+            pattern: '/^[a-z]+$/i'
+            htmlPattern: '[a-zA-Z]+'
+            message: Your surname cannot contain a special characters
+    date:
+        - NotBlank: ~
+    sex:
+        - NotBlank: ~
+    pesel:
+        - NotBlank: ~
+        - Length: 11
+        - Regex: /^[0-9]/i
+    email:
+        - NotBlank: ~

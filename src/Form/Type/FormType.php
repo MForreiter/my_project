@@ -14,8 +14,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use function Sodium\add;
 
+
+
 class FormType extends AbstractType
 {
+
+
     public function buildForm(FormBuilderInterface $builder, array $options) :void
     {
         $builder
@@ -31,7 +35,7 @@ class FormType extends AbstractType
                     'Undefined' => 'undefined',
                 ],
             ])
-            ->add('pesel', NumberType::class)
+            ->add('pesel', TextType::class)
             ->add('email', EmailType::class)
             ->add('save', SubmitType::class);
 
@@ -42,5 +46,6 @@ class FormType extends AbstractType
             'data_class' => Form::class,
         ]);
     }
+
 
 }

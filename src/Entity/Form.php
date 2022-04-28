@@ -141,12 +141,12 @@ class Form
     }
 
     /**
-     * @param mixed $pesel
+     * @param mixed $pesel1
      * @return Form
      */
-    public function setPesel($pesel)
+    public function setPesel($pesel1)
     {
-        $this->pesel = $pesel;
+        $this->pesel = $pesel1;
         return $this;
     }
 
@@ -168,11 +168,9 @@ class Form
         return $this;
     }
 
-
-
-
-
-
+    public function verify($pesel)
+    {
+    }
 
 
 }
