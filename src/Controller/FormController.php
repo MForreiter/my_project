@@ -28,14 +28,39 @@ class FormController extends AbstractController
 
             $liczba = str_split($form->getPesel());
             $suma = $liczba[0] * 1 + $liczba[1] * 3 + $liczba[2] * 7 + $liczba[3] * 9 + $liczba[4] * 1 + $liczba[5] * 3 + $liczba[6] * 7 + $liczba[7] * 9 + $liczba[8] * 1 + $liczba[9] * 3 + $liczba[10] * 1;
+            $day = ($form->getDate()->format('d'));
+            $month =($form->getDate()->format('m'));
+            $year = ($form->getDate()->format('y'));
+            $fullyear = ($form->getDate()->format('Y'));
+            $xyz=0;
+            if($fullyear>=1800 && $fullyear<=1899){
+                $xyz=80;
+            }
+            elseif($fullyear>=2000 && $fullyear<=2099){
+                $xyz=20;
+            }
+            elseif($fullyear>=2100 && $fullyear<=2199){
+                $xyz=40;
+            }
+            elseif($fullyear>=2200 && $fullyear<=2299){
+                $xyz=60;
+            }
+            $month= $month+ $xyz;
+            
+
 
             if ($suma % 10 == 0) {
                 if(($liczba[9]%2==0 && $form->getSEX()=='woman') || ($liczba[9]%3==0 && $form->getSEX()=='man')){
 
+                    if($day==$liczba[4].$liczba[5] && $month==$liczba[2].$liczba[3] && $year == $liczba[0].$liczba[1]){
                 $entityManager->persist($form);
                 $entityManager->flush();
                 return $this->redirectToRoute('form_success', ['id' => $form->getId()]);
             }
+                else {
+                    return $this->redirectToRoute('form_new',  ['error'=>'nieprawidłowy data']);
+                }
+                }
                 else {
                     return $this->redirectToRoute('form_new',  ['error'=>'nieprawidłowy pesel']);
                 }
