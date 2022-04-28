@@ -1,0 +1,26 @@
+<table border>
+
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Date</th>
+        <th>Sex</th>
+        <th>Pesel</th>
+        <th>Email</th>
+    </tr>
+
+    {% for form in forms  %}
+    <tr>
+        <td>{{ form.id }}</td>
+        <td>{{ form.name }}</td>
+        <td>{{form.surname }}</td>
+        <td>{{ form.date.format('d/m/Y') }}</td>
+        <td>{{form.sex }}</td>
+        <td>{{form.pesel }}</td>
+        <td>{{form.email }}</td>
+
+
+
+        {% endfor %}
+</table>
