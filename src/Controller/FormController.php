@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use Symfony\Component\Validator;
 use App\Entity\Form;
 use App\Form\Type\FormType;
@@ -14,7 +15,6 @@ class FormController extends AbstractController
 {
     /**
      * @Route("/form/new", name="form_new")
-
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -24,27 +24,38 @@ class FormController extends AbstractController
         $form1->handleRequest($request);
 
 
-            if ($form1->isSubmitted() && $form1->isValid()) {
+        if ($form1->isSubmitted() && $form1->isValid()) {
 
-                $liczba = str_split($form->getPesel());
-                $suma = $liczba[0] * 1 + $liczba[1] * 3 + $liczba[2] * 7 + $liczba[3] * 9 + $liczba[4] * 1 + $liczba[5] * 3 + $liczba[6] * 7 + $liczba[7] * 9 + $liczba[8] * 1 + $liczba[9] * 3 + $liczba[10] * 1;
-                if ($suma % 10 == 0) {
+            $liczba = str_split($form->getPesel());
+            $suma = $liczba[0] * 1 + $liczba[1] * 3 + $liczba[2] * 7 + $liczba[3] * 9 + $liczba[4] * 1 + $liczba[5] * 3 + $liczba[6] * 7 + $liczba[7] * 9 + $liczba[8] * 1 + $liczba[9] * 3 + $liczba[10] * 1;
+
+            if ($suma % 10 == 0) {
+                if(($liczba[9]%2==0 && $form->getSEX()=='woman') || ($liczba[9]%3==0 && $form->getSEX()=='man')){
+
                 $entityManager->persist($form);
                 $entityManager->flush();
                 return $this->redirectToRoute('form_success', ['id' => $form->getId()]);
             }
-            else{
-                die('nieprawidłowy pesel');
-            }}
-            return $this->renderForm('form/new.html.twig', [
-                'form' => $form1
-            ]);
+                else {
+                    return $this->redirectToRoute('form_new',  ['error'=>'nieprawidłowy pesel']);
+                }
+
         }
+            else {
+
+                return $this->redirectToRoute('form_new',  ['error'=>'nieprawidłowy pesel']);
+
+            }
+        }
+        return $this->renderForm('form/new.html.twig', [
+            'form' => $form1
+        ]);
+    }
+
 
 
     /**
      * @Route("/form/success/{id}", name="form_success")
-
      */
     public function success($id)
     {
@@ -54,16 +65,13 @@ class FormController extends AbstractController
 
     /**
      * @Route("/form/all", name="form_all")
-
      */
-    public function all( EntityManagerInterface $entityManager)
+    public function all(EntityManagerInterface $entityManager)
     {
-        $formRepository= $entityManager->getRepository(Form::class);
-        $forms=$formRepository->findAll();
+        $formRepository = $entityManager->getRepository(Form::class);
+        $forms = $formRepository->findAll();
 
-        return $this->render('form/all.html.twig', ['forms'=>$forms]);
-
-
+        return $this->render('form/all.html.twig', ['forms' => $forms]);
 
 
     }

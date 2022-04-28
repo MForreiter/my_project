@@ -18,7 +18,6 @@ class TaskController extends AbstractController
 {
     /**
      * @Route("/task/new", name="task_new")
-
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -40,7 +39,6 @@ class TaskController extends AbstractController
 
     /**
      * @Route("/task/success/{id}", name="task_success")
-
      */
     public function success($id)
     {
@@ -50,16 +48,13 @@ class TaskController extends AbstractController
 
     /**
      * @Route("/task/all", name="task_all")
-
      */
-    public function all( EntityManagerInterface $entityManager)
+    public function all(EntityManagerInterface $entityManager)
     {
-        $taskRepository= $entityManager->getRepository(Task::class);
-        $tasks=$taskRepository->findAll();
+        $taskRepository = $entityManager->getRepository(Task::class);
+        $tasks = $taskRepository->findAll();
 
-        return $this->render('task/all.html.twig', ['tasks'=>$tasks]);
-
-
+        return $this->render('task/all.html.twig', ['tasks' => $tasks]);
 
 
     }
