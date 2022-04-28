@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator;
 /**
  * @ORM\Entity()
  */
@@ -165,6 +166,13 @@ class Form
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function Verify($pesel)
+    {
+        return $this->pesel;
+    }
 
 
 }
