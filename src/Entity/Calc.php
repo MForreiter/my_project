@@ -3,14 +3,11 @@
 namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity()
- */
+
+
 class Calc
 {
-    /**
-     * @ORM\Column(type="string")
-     */
+
     private $calculations;
 
 
@@ -31,4 +28,6 @@ class Calc
         $this->calculations = $calculations;
         return $this;
     }
+
+
 }

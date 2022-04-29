@@ -4,15 +4,16 @@ namespace App\Form\Type;
 
 
 use App\Entity\Calc;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CalcType extends AbstractController
+class CalcType extends AbstractType
 {
-public function buildForm(FormBuilderInterface $builder, array $options): void
+public function buildForm(FormBuilderInterface $builder, array $options) :void
 {
     $builder
         ->add('calculations' , TextType::class)
