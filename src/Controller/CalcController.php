@@ -89,10 +89,81 @@ class CalcController extends AbstractController
                 $liczba = $newLiczba;
 
             }
+            elseif(($liczba[$i]=='+' || $liczba[$i]=='-')&& (!in_array('*',$liczba))&& (!in_array('/',$liczba))){
+                $j=$i-1;
+                $a='';
+                $b='';
+                $start=0;
+                $end=0;
+                while($j>=0){
+                    if(!in_array($liczba[$j],['+','-','/','*'])){
+                        $a=$liczba[$j].$a;
+                        $start=$j;
+                        $j--;
+                    }
+                    else{
+                        break;
+                    }
+
+                }
+                $j=$i+1;
+                while($j<count($liczba)){
+                    if(!in_array($liczba[$j],['+','-','/','*'])){
+                        $b=$b.$liczba[$j];
+                        $end=$j;
+                        $j++;
+                    }
+                    else{
+                        break;
+                    }
+
+                }
+                if($liczba[$i]=='+'){
+                    $resault= (int)$a + (int)$b;
+                }
+                else{
+                    $resault=(int)$a-(int)$b;
+                }
+
+                $x=0;
+                $newLiczba = [];
+                while ($x < $start) {
+                    $newLiczba[$x] = $liczba[$x];
+                    $x++;
+                }
+
+                $z=0;
+                $resaultArray = str_split($resault);
+                while ($z < strlen($resault)) {
+                    $newLiczba[$x] = $resaultArray[$z];
+                    $z ++;
+                    $x ++;
+                }
+                $y = $end +1;
+                while ($y < count($liczba)) {
+                    $newLiczba[$x] = $liczba[$y];
+                    $x++;
+                    $y++;
+
+                }
+
+
+                $i = -1;
+                $liczba = $newLiczba;
+
+
+
+
+
+            }
                 $i++;
 
 
             }
+
+
+
+
 
             var_dump($liczba);
 
