@@ -165,7 +165,7 @@ class CalcController extends AbstractController
 
 
 
-            var_dump($liczba);
+            echo 'Wynik: '.implode($liczba);
 
 
         }
