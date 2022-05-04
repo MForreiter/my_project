@@ -207,6 +207,9 @@
     "symfony/options-resolver": {
         "version": "v6.0.3"
     },
+    "symfony/orm-pack": {
+        "version": "v2.2.0"
+    },
     "symfony/polyfill-intl-grapheme": {
         "version": "v1.25.0"
     },
